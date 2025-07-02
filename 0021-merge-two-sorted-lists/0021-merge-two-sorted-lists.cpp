@@ -11,11 +11,9 @@
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        // Dummy node to simplify handling of head
         ListNode dummy;
         ListNode* tail = &dummy;
 
-        // Traverse both lists and pick the smaller value
         while (list1 && list2) {
             if (list1->val < list2->val) {
                 tail->next = list1;
@@ -27,7 +25,6 @@ public:
             tail = tail->next;
         }
 
-        // Append the remaining nodes (only one of these will be non-null)
         tail->next = list1 ? list1 : list2;
 
         return dummy.next;
