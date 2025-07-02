@@ -41,7 +41,6 @@ public:
         Node* curr=new Node(val);
         if(head==nullptr){
             head=curr;
-            return;
         }
         else{
             Node* temp=head;
