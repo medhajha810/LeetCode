@@ -2,10 +2,9 @@ class Solution {
 public:
     int countDays(int days, vector<vector<int>>& meetings) {
         // Sort the meetings based on start time
-        sort(meetings.begin(), meetings.end(),
-             [](const vector<int>& a, const vector<int>& b) {
-                 return a[0] < b[0];
-             });
+        sort(meetings.begin(), meetings.end(), [](const vector<int>& a, const vector<int>& b) {
+            return a[0] < b[0];
+        });
 
         int freeDays = 0;
         int last = 0;
