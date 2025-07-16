@@ -1,20 +1,33 @@
 class Solution {
 public:
-    bool canPartition(vector<int>& nums) {
-        int totalSum = 0;
-        for (int num : nums) totalSum += num;
-
-        if (totalSum % 2 != 0) return false;
-
-        int targetSum = totalSum / 2;
-        vector<bool> dp(targetSum + 1, false);
-        dp[0] = true;
-        for (int num : nums) {
-            for (int currSum = targetSum; currSum >= num; --currSum) {
-                dp[currSum] = dp[currSum] || dp[currSum - num];
-                if (dp[targetSum]) return true;
+    int perfectSum(vector<int>& arr, int target) {
+        int n= arr.size();
+        vector<vector<unsigned long long>> dp(n + 1, vector<unsigned long long>(target + 1, 0));
+        for(int i=0;i<=n;i++){
+            dp[i][0]=1;
+        }
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= target; j++) {
+                if (arr[i - 1] <= j) {
+                    dp[i][j] = (dp[i - 1][j] + dp[i - 1][j - arr[i - 1]]);
+                } else {
+                    dp[i][j] = dp[i - 1][j];
+                }
             }
         }
-        return dp[targetSum];
+        
+        return dp[n][target];
+        // code here
+        
+    }
+    bool canPartition(vector<int>& nums) {
+        int sum=0;
+        for(int i=0;i<nums.size();i++){
+            sum+=nums[i];
+        }
+        if (sum % 2 != 0) return false;
+
+        int target = sum / 2;
+        return perfectSum(nums, target) > 0;
     }
 };
