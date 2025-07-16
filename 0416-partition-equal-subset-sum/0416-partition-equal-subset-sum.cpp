@@ -2,6 +2,7 @@ class Solution {
 public:
     int perfectSum(vector<int>& arr, int target) {
         int n= arr.size();
+        const int mod = 1e9 + 7;
         vector<vector<long long>> dp(n + 1, vector<long long>(target + 1, 0));
         for(int i=0;i<=n;i++){
             dp[i][0]=1;
