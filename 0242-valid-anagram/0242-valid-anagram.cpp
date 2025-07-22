@@ -1,9 +1,20 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        sort(s.begin(),s.end());
-        sort(t.begin(),t.end());
-        return s==t;
+        unordered_map<char,char> freq;
+        if(s.size()!=t.size()){
+            return false;
+        }
+        for(char c:s){
+            freq[c]++;
+        }
+        for(char c:t){
+            freq[c]--;
+            if(freq[c]<0){
+                return false;
+            }
+        }
+        return true;
     }
     
 };
