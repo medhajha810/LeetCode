@@ -26,7 +26,7 @@ public:
             }
         }
         if (i == -1 || j == -1) return 0;
-        return abs(i-j);
+        return j-i;
         
     }
 };
