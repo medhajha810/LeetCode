@@ -19,7 +19,7 @@ public:
         if(e<0){
             e=-e;
         }
-        double ans=func(x,e,1.0);
+        double ans=func(x,e,ans);
         if(n>0){
             return ans;
         }
