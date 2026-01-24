@@ -3,20 +3,17 @@ public:
     int lengthOfLongestSubstring(string s) {
         unordered_map<char, int> check;
         int maxLen = 0;
-        int count = 0;
-        int start = 0;
+        int i = 0;
 
-        for (int i = 0; i < s.size(); i++) {
-            check[s[i]]++;
-            count++;
+        for (int j = 0; j < s.size(); j++) {
+            check[s[j]]++;
 
-            while (check[s[i]] > 1) {
-                check[s[start]]--;
-                start++;
-                count--;
+            while (check[s[j]] > 1) {
+                check[s[i]]--;
+                i++;
             }
 
-            maxLen = max(maxLen, count);
+            maxLen = max(maxLen, j-i+1);
         }
 
         return maxLen;
